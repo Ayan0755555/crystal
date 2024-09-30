@@ -61,8 +61,8 @@ export default function Cards() {
   const [sort, setSort] = useState("Best Selling");
 
   return (
-    <div className="container bg-white mt-[100px] mx-auto ">
-      <h1 className="text-4xl font-bold text-center text-gray-800">
+    <div className="container bg-white mx-auto ">
+      <h1 className="text-4xl mt-20 font-bold text-center text-gray-800">
         All Products
       </h1>
 
