@@ -61,7 +61,7 @@ export default function Cards() {
   const [sort, setSort] = useState("Best Selling");
 
   return (
-    <div className="container bg-white mt-[100px] mx-auto px-4 py-8">
+    <div className="container bg-white mt-[100px] mx-auto ">
       <h1 className="text-4xl font-bold text-center text-gray-800">
         All Products
       </h1>

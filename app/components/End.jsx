@@ -3,7 +3,7 @@ import CardsIma from "../fonts/image.png";
 
 export default function End() {
   return (
-    <div className="min-h-screen mt-10 bg-gradient-to-b bg-white from-white to-white flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-b bg-white from-white to-white flex items-center justify-center p-4">
       <div className="w-full mb-[10]  h-[100vh] bg-white rounded-3xl shadow-lg overflow-hidden relative">
         <div className="p-8 md:p-12 flex flex-col md:flex-row items-center z-10 relative">
           {/* Left Section - Text Content */}
