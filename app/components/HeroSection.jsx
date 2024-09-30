@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef } from "react";
@@ -7,6 +8,7 @@ import CardsImage from "../fonts/image.png";
 
 export default function HeroSection() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const scrollTargetRef = useRef(null);
 
   const images = [
@@ -29,11 +31,11 @@ export default function HeroSection() {
   };
 
   const handleScrollDown = () => {
-    scrollTargetRef.current.scrollIntoView({ behavior: "smooth" });
+    scrollTargetRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <div className="h-screen flex flex-col bg-gradient-to-br from-cyan-300 via-pink-300 to-blue-300">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-cyan-300 via-pink-300 to-blue-300">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
         <div className="flex items-center space-x-2">
           <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
@@ -56,7 +58,7 @@ export default function HeroSection() {
             Pop Rock Crystal
           </span>
         </div>
-        <nav>
+        <nav className="hidden md:block">
           <ul className="flex space-x-6 text-white">
             <li>
               <Link href="/">Home</Link>
@@ -77,8 +79,54 @@ export default function HeroSection() {
             <ShoppingCart className="w-6 h-6" />
           </button>
           <div className="w-6 h-6 bg-red-500 rounded-full" />
+          <button
+            className="md:hidden text-white"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
         </div>
       </header>
+
+      {isMenuOpen && (
+        <nav className="md:hidden bg-white">
+          <ul className="flex flex-col space-y-2 p-4">
+            <li>
+              <Link href="/" className="text-blue-500">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/shop" className="text-blue-500">
+                Shop
+              </Link>
+            </li>
+            <li>
+              <Link href="/about" className="text-blue-500">
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link href="/help" className="text-blue-500">
+                Help
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      )}
 
       <main className="container mx-auto px-4 py-12 flex flex-1 flex-col lg:flex-row items-center">
         <div className="lg:w-1/2 mb-8 lg:mb-0">
@@ -87,12 +135,12 @@ export default function HeroSection() {
             <br />
             Pop Rock Crystal Shop!
           </h1>
-          <p className="text-black text-[20px] mb-8 max-w-md">
+          <p className="text-black text-lg lg:text-xl mb-8 max-w-md">
             Here you will find unique phone accessories, crystals, jewelry, and
             more. Free shipping inside the U.S. and our phone grips come with a
             limited warranty. Enjoy!
           </p>
-          <div className="flex space-x-4">
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <button className="bg-white text-blue-500 px-6 py-2 rounded-full font-semibold">
               SHOP NOW
             </button>
@@ -102,8 +150,8 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="lg:w-1/2 relative">
-          <div className="bg-white p-8 rounded-3xl shadow-lg">
+        <div className="lg:w-1/2 relative mt-8 lg:mt-0">
+          <div className="bg-white p-4 sm:p-8 rounded-3xl shadow-lg">
             <span className="bg-purple-400 text-white px-3 py-1 rounded-full text-sm">
               New lot
             </span>
@@ -113,10 +161,10 @@ export default function HeroSection() {
                 alt={images[activeSlide].alt}
                 width={300}
                 height={300}
-                className="rounded-lg"
+                className="rounded-lg w-full max-w-[300px] h-auto"
               />
             </div>
-            <h2 className="text-2xl font-semibold text-gray-800 mt-4">
+            <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-4">
               {images[activeSlide].alt} - {images[activeSlide].price}
             </h2>
             <div className="flex justify-between mt-4">
@@ -137,7 +185,7 @@ export default function HeroSection() {
         </div>
       </main>
 
-      <div className="flex justify-end mr-[325px] space-x-2 mb-[85px]">
+      <div className="flex justify-center lg:justify-end lg:mr-[325px] space-x-2 mb-8 lg:mb-[85px]">
         {images.map((_, i) => (
           <div
             key={i}
@@ -149,13 +197,13 @@ export default function HeroSection() {
       </div>
 
       <div
-        className="flex justify-center text-center mt-[35px] text-blue-900 cursor-pointer"
+        className="flex flex-col items-center text-center mt-4 lg:mt-[35px] text-blue-900 cursor-pointer mb-8"
         onClick={handleScrollDown}
       >
-        <span className="text-6xl font-bold">
+        <span className="text-4xl lg:text-6xl font-bold">
           <MouseIcon />
         </span>
-        <p className="mb-[110px]">scroll down</p>
+        <p>scroll down</p>
       </div>
 
       {/* Scroll Target */}
