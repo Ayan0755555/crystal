@@ -197,7 +197,7 @@ export default function HeroSection() {
       </div>
 
       <div
-        className="flex flex-col items-center text-center mt-4 lg:mt-[35px] text-blue-900 cursor-pointer mb-8"
+        className="flex flex-col items-center text-center mt-4 lg:mt-[35px] text-blue-900 cursor-pointer "
         onClick={handleScrollDown}
       >
         <span className="text-4xl lg:text-6xl font-bold">
