@@ -4,7 +4,6 @@ import { useState } from "react";
 import { ChevronDownIcon } from "lucide-react";
 import Image from "next/image";
 import CardsIma from "../fonts/image.png";
-import "../../module/cards.css";
 
 const products = [
   {
