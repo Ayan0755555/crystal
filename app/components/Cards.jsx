@@ -61,7 +61,7 @@ export default function Cards() {
   const [sort, setSort] = useState("Best Selling");
 
   return (
-    <div className="container mt-[100px] mx-auto px-4 py-8">
+    <div className="container bg-white mt-[100px] mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center text-gray-800">
         All Products
       </h1>
@@ -106,7 +106,7 @@ export default function Cards() {
             key={product.id}
             className="bg-white rounded-lg shadow-md overflow-hidden"
           >
-            <div className="relative w-full h-[250px]">
+            <div className="relative w-full h-[270px]">
               <Image
                 src={product.src}
                 alt={product.name}
